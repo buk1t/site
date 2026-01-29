@@ -11,18 +11,21 @@ const PROJECTS: Project[] = [
     name: "buk1t.com",
     desc: "personal site",
     href: "https://www.buk1t.com",
+    repo: "https://github.com/buk1t/site",
     status: "active",
   },
   {
     name: "home",
     desc: "custom home page designed for safari",
-    href: "https://buk1t.github.io/home/",
+    href: "https://home.buk1t.com",
+    repo: "https://github.com/buk1t/home",
     status: "active",
   },
   {
     name: "mood",
     desc: "mood tracking app",
-    href: "https://github.com/buk1t/mood",
+    href: "https://example.com",
+    repo: "https://github.com/buk1t/mood",
     status: "in dev",
   }
   // Add yours here:
