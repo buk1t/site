@@ -24,7 +24,6 @@ const PROJECTS: Project[] = [
   {
     name: "mood",
     desc: "mood tracking app",
-    href: "https://example.com",
     repo: "https://github.com/buk1t/mood",
     status: "in dev",
   }
