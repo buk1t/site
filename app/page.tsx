@@ -1,85 +1,90 @@
+const SOCIALS = [
+  { label: "X", href: "https://x.com/_buk1t" },
+  { label: "Instagram", href: "https://instagram.com/_buk1t" },
+  { label: "Email", href: "mailto:dev@buk1t.com" },
+];
+
 export default function Home() {
   return (
     <main className="page">
       <div className="wrap">
-        <header className="top">
-          <div>
-            <div className="kicker">buk1t.com</div>
-            <h1 className="title">Build. Ship. Iterate.</h1>
-            <p className="subtitle">
-              A small homebase for dev projects, experiments, and whatever I’m
-              working on next.
-            </p>
-
-            <div className="actions">
-              <a className="btn" href="/projects">
-                Projects <span aria-hidden>→</span>
-              </a>
-              <a
-                className="btn ghost"
-                href="https://github.com/buk1t"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub <span aria-hidden>↗</span>
-              </a>
-              <a className="btn ghost" href="mailto:dev@buk1t.com">
-                dev@buk1t.com
-              </a>
-            </div>
+        <header className="termWindow">
+          <div className="termBar">
+            <span className="dot red" />
+            <span className="dot yellow" />
+            <span className="dot green" />
+            <span className="termTitle">Terminal — buk1t</span>
           </div>
 
-          <div className="status">
-            <div className="statusRow">
-              <span className="dot" /> status <span className="muted">online</span>
+          <div className="termBody">
+            <Line ctx="whoami" cmd="git push origin main" />
+            <h1 className="hero">buk1t</h1>
+            <p className="sub">
+              homepage for my site... welcome!
+            </p>
+
+            <div className="row">
+              <a className="btn" href="/projects">
+                cd projects/
+              </a>
+               <a className="btn" href="/now">
+                cd now/
+              </a>
             </div>
-            <div className="statusRow">
-              <span className="dot blue" /> deploy <span className="muted">vercel</span>
+
+            <div className="spacer" />
+
+            <Line ctx="socials" cmd="ls -a"/>
+            <div className="chips">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  className="chip"
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="chipLabel">{s.label}</span>
+                  <span className="chipValue">{pretty(s.href)}</span>
+                </a>
+              ))}
             </div>
-            <div className="statusRow">
-              <span className="dot purple" /> stack <span className="muted">next.js</span>
+
+            <div className="spacer" />
+
+            <Line ctx="readme" cmd="nano README.txt" />
+            <div className="readme">
+              <p>
+                <span className="tag">NOW</span> finishing up this site
+              </p>
+              <p>
+                <span className="tag">NEXT</span> getting back to working on my projects
+              </p>
             </div>
           </div>
         </header>
 
-        <section className="grid">
-          <div className="card">
-            <h2>Now</h2>
-            <p>
-              Setting up a clean Next.js base, a projects index, and a simple way
-              to keep this site updated without it turning into a chore.
-            </p>
-          </div>
-
-          <div className="card">
-            <h2>Next</h2>
-            <ul>
-              <li>Projects page + cards</li>
-              <li>Optional notes/blog</li>
-              <li>Small “about” + links</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="terminal">
-          <div className="termBar">
-            <span className="dotRed" />
-            <span className="dotYellow" />
-            <span className="dotGreen" />
-            <span className="termTitle">~/buk1t</span>
-          </div>
-          <pre className="termBody">
-{`$ cat roadmap.txt
-- ship homepage
-- add /projects
-- keep it simple`}
-          </pre>
-        </section>
-
         <footer className="footer">
-          © {new Date().getFullYear()} buk1t · built with next.js
+          <span>© {new Date().getFullYear()} buk1t</span>
+          <span className="sep">·</span>
+          <span>www.buk1t.com</span>
         </footer>
       </div>
     </main>
   );
+}
+
+function Line({ ctx, cmd }: { ctx: string; cmd: string }) {
+  return (
+    <div className="line">
+      <span className="prompt">buk1t@{ctx}</span>
+      <span className="dim">:</span>
+      <span className="cmd"> {cmd}</span>
+      <span className="cursor" aria-hidden />
+    </div>
+  );
+}
+
+function pretty(href: string) {
+  return href.replace(/^https?:\/\//, "");
 }
