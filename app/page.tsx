@@ -68,6 +68,7 @@ export default function Home() {
           <span>© {new Date().getFullYear()} buk1t</span>
           <span className="sep">·</span>
           <span>www.buk1t.com</span>
+          <span><a href="https://links.buk1t.com">www.buk1t.com</a></span>
         </footer>
       </div>
     </main>
